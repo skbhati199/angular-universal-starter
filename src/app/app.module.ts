@@ -1,5 +1,5 @@
-import { AppRoutes } from './app.routing';
-import { RouterModule } from '@angular/router';
+import { HomeIonicComponent } from './home-ionic/home-ionic.component';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { CommonModule } from '@angular/common';
 import { TransferHttpModule } from './../modules/transfer-http/transfer-http.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,16 +12,17 @@ import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeIonicComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     HttpModule,
-    RouterModule,
-    AppRoutes,
     TransferHttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IonicModule.forRoot(AppComponent)
   ],
+  entryComponents: [ HomeIonicComponent ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [IonicApp]
 })
 export class AppModule { }
