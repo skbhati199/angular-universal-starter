@@ -19,7 +19,7 @@ import { ServerPrebootModule } from 'preboot/server';
     ServerTransferStateModule,
     ServerModule,
     ModuleMapLoaderModule,
-    ServerPrebootModule.recordEvents({ appRoot: 'app-root' })
+    ServerPrebootModule.recordEvents({ appRoot: 'ion-app' })
   ],
   bootstrap: [AppComponent],
   providers: [
