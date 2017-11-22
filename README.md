@@ -1,99 +1,74 @@
 # Angular Universal starter kit
-[![Build Status](https://semaphoreci.com/api/v1/angularru/angular-universal-starter/branches/master/badge.svg)](https://semaphoreci.com/angularru/angular-universal-starter)
+[![Build Status](https://semaphoreci.com/api/v1/angularru/angular-universal-starter/branches/ionic/badge.svg)](https://semaphoreci.com/angularru/angular-universal-starter)
 
 Репозиторий с Angular CLI и Angular Universal
 
 - публичный чат https://t.me/angular_universal_ru
 
-- http://master-ssr.gorniv.com/ - серверный рендеринг master
+- http://ionic-ssr.gorniv.com/ - серверный рендеринг ionic
 
-- http://master-csr.gorniv.com/ - клиенский рендеринг master
+- http://ionic-csr.gorniv.com/ - клиенский рендеринг ionic
 
-# Планы:
-- [x] Angular 5
-- [x] `document is not defined` и `window is not defined` - [тут](./defined.md)
-- [x] [Angular Material2](https://material.angular.io/) **UI компоненты** - [отдельная ветка](https://github.com/Angular-RU/angular-universal-starter/tree/material2)
-- [x] [Primeng](https://www.primefaces.org/primeng/) **UI компоненты** - [отдельная ветка](https://github.com/Angular-RU/angular-universal-starter/tree/primeng)
-- [x] импорт модулей в зависимости от платформы (`MockServerBrowserModule`)
-- [x] выполнение запросов к api на сервере `TransferHttp`
-- [x] работа с Cookies на сервере `UniversalStorage`
-- [ ] Ionic - необходимо собрать веб версию, пока есть проблемы [отдельная ветка](https://github.com/Angular-RU/angular-universal-starter/tree/ionic)
-
-## Как запустить
-- `yarn` или `npm install`
-- `npm run start` - для клиенского рендеринга
-- `npm run ssr` -  для серверного рендеринга
-- `npm run build:universal` - для сборки в релиз
-- `npm run server` - для запуска сервера
-
-## Ссылки
-Официальный пример на анлийиском: https://github.com/angular/universal-starter 
-Модули используемые для universal:
-- https://github.com/angular/universal/tree/master/modules/aspnetcore-engine -движок для .net core
-- https://github.com/angular/universal/tree/master/modules/common - TransferHttpCacheModule, на данный момент мной не используется, если знаете куда и зачем его встаить - напишите мне или в issue, pull request
-- https://github.com/angular/universal/tree/master/modules/express-engine - Express Engine для запуска рендеринга в node, в нашем приложении используется. Обратите внимание, что актуальная версия  не ниже 5.0.0-beta.5
-- https://github.com/angular/universal/tree/master/modules/hapi-engine -  Hapi Engine альтернативный движок для рендеринга. В примере не используется, принципиально в схеме подключения не отличается от express-engine
-- https://github.com/angular/universal/tree/master/modules/module-map-ngfactory-loader - модуль поиска модулей для LazyLoading - вещь нужная и  используемая. Обратите внимание, что актуальная версия  не ниже 5.0.0-beta.5
-
-## Особенности(Важно)
-- модуль для TransferHttp  использует `import { TransferState } from '@angular/platform-browser';` и необходим для реализации запроса rest api  на сервере и остутствия повторного запроса второй раз. Смотрите `home.component.ts` (задержка 3с)
-
-```ts
-this.http.get('https://reqres.in/api/users?delay=3').subscribe(result => {
-    this.result = result;
-});
+Не работает.
+Ошибка на сервере:
 ```
-- `export const AppRoutes = RouterModule.forRoot(routes, { initialNavigation: 'enabled' });` -  чтобы не было мигания страницы!
-
-- для работы с куками написан `AppStorage`,  которыйй при помощи DI  позволяет отдавать разную реализацию для сервера и бразуера. Смотрите `server.storage.ts` и `browser.storage.ts` по реализациям. В `server.ts`  есть 
-```ts
-providers: [
-    {
-        provide: REQUEST, useValue: (req)
-    },
-    {
-        provide: RESPONSE, useValue: (res)
-    }
-]
+ERROR ReferenceError: Node is not defined
+    at Menu.ngOnInit (/Users/Gorniv/GitHub/angular-universal-starter/server.js:113595:44)
+    at checkAndUpdateDirectiveInline (/Users/Gorniv/GitHub/angular-universal-starter/server.js:12365:19)
+    at checkAndUpdateNodeInline (/Users/Gorniv/GitHub/angular-universal-starter/server.js:13868:20)
+    at checkAndUpdateNode (/Users/Gorniv/GitHub/angular-universal-starter/server.js:13811:16)
+    at prodCheckAndUpdateNode (/Users/Gorniv/GitHub/angular-universal-starter/server.js:14514:5)
+    at Object.updateDirectives (/Users/Gorniv/GitHub/angular-universal-starter/server.js:156131:3367)
+    at Object.updateDirectives (/Users/Gorniv/GitHub/angular-universal-starter/server.js:14255:29)
+    at checkAndUpdateView (/Users/Gorniv/GitHub/angular-universal-starter/server.js:13778:14)
+    at callViewAction (/Users/Gorniv/GitHub/angular-universal-starter/server.js:14128:21)
+    at execComponentViewsAction (/Users/Gorniv/GitHub/angular-universal-starter/server.js:14060:13)
+ERROR { Error: StaticInjectorError[Config]:
+  StaticInjectorError[Config]:
+    NullInjectorError: No provider for Config!
+    at _NullInjector.get (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1193:19)
+    at resolveToken (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1481:24)
+    at tryResolveToken (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1423:16)
+    at StaticInjector.get (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1294:20)
+    at resolveToken (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1481:24)
+    at tryResolveToken (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1423:16)
+    at StaticInjector.get (/Users/Gorniv/GitHub/angular-universal-starter/server.js:1294:20)
+    at resolveNgModuleDep (/Users/Gorniv/GitHub/angular-universal-starter/server.js:10855:25)
+    at NgModuleRef_.get (/Users/Gorniv/GitHub/angular-universal-starter/server.js:12076:16)
+    at resolveDep (/Users/Gorniv/GitHub/angular-universal-starter/server.js:12572:45) ngTempTokenPath: null, ngTokenPath: [ [Function: Config] ] }
 ```
-для работы с REQUEST и RESPONSE через DI -  это необходимо для реализации UniversalStorage при работе с cookies.
-
-- webpack.config.js  прописан исключительно для сборки файла server.ts в  server.js, так как angular-cliт имеет [баг](https://github.com/angular/angular-cli/issues/7200) для работы с 3d зависимостями.
-- для решения части проблем используется следущий код в `server.ts`
-
-Решение проблем глобавльных переменных, в том числе `document is not defined` и `window is not defined`
-```ts
-const domino = require('domino');
-const fs = require('fs');
-const path = require('path');
-const template = fs.readFileSync(path.join(__dirname, '.', 'dist', 'index.html')).toString();
-const win = domino.createWindow(template);
-const files = fs.readdirSync(`${process.cwd()}/dist-server`);
-const styleFiles = files.filter(file => file.startsWith('styles'));
-const hashStyle = styleFiles[0].split('.')[1];
-const style = fs.readFileSync(path.join(__dirname, '.', 'dist-server', `styles.${hashStyle}.bundle.css`)).toString();
-
-global['window'] = win;
-Object.defineProperty(win.document.body.style, 'transform', {
-  value: () => {
-    return {
-      enumerable: true,
-      configurable: true
-    };
-  },
-});
-global['document'] = win.document;
-global['CSS'] = style;
-// global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
-global['Prism'] = null;
-
+Ошибка в браузере:
 ```
-
-```ts
-global['navigator'] = req['headers']['user-agent'];
-```
-это позволяет убрать часть проблем при работе с `undefined`.
-
-
-
-
+core.js:1350 ERROR Error: Uncaught (in promise): TypeError: menuTypes[type] is not a constructor
+TypeError: menuTypes[type] is not a constructor
+    at Function.webpackJsonp.../../../../ionic-angular/components/app/menu-controller.js.MenuController.create (menu-controller.js:314)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu._getType (menu.js:330)
+    at menu.js:349
+    at new ZoneAwarePromise (zone.js:890)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.setOpen (menu.js:347)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.toggle (menu.js:484)
+    at MenuToggle.webpackJsonp.../../../../ionic-angular/components/menu/menu-toggle.js.MenuToggle.toggle (menu-toggle.js:104)
+    at Object.handleEvent (home.ngfactory.ts:38)
+    at handleEvent (core.js:13255)
+    at callWithDebugContext (core.js:14740)
+    at Function.webpackJsonp.../../../../ionic-angular/components/app/menu-controller.js.MenuController.create (menu-controller.js:314)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu._getType (menu.js:330)
+    at menu.js:349
+    at new ZoneAwarePromise (zone.js:890)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.setOpen (menu.js:347)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.toggle (menu.js:484)
+    at MenuToggle.webpackJsonp.../../../../ionic-angular/components/menu/menu-toggle.js.MenuToggle.toggle (menu-toggle.js:104)
+    at Object.handleEvent (home.ngfactory.ts:38)
+    at handleEvent (core.js:13255)
+    at callWithDebugContext (core.js:14740)
+    at resolvePromise (zone.js:824)
+    at new ZoneAwarePromise (zone.js:893)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.setOpen (menu.js:347)
+    at Menu.webpackJsonp.../../../../ionic-angular/components/menu/menu.js.Menu.toggle (menu.js:484)
+    at MenuToggle.webpackJsonp.../../../../ionic-angular/components/menu/menu-toggle.js.MenuToggle.toggle (menu-toggle.js:104)
+    at Object.handleEvent (home.ngfactory.ts:38)
+    at handleEvent (core.js:13255)
+    at callWithDebugContext (core.js:14740)
+    at Object.debugHandleEvent [as handleEvent] (core.js:14327)
+    at dispatchEvent (core.js:9704)
+    ```
