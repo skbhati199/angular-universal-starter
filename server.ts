@@ -22,6 +22,7 @@ global['document'] = win.document;
 global['CSS'] = null;
 // global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
 global['Prism'] = null;
+global['Node'] = domino.impl.Node;
 
 import { HttpClient } from '@angular/common/http';
 import 'reflect-metadata';
