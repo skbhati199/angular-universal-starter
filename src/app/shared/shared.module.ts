@@ -1,10 +1,14 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { LayoutsModule } from './layouts/layouts.module';
+import { SharedConfigModule } from './shared-config';
+import { SharedMetaModule } from './shared-meta';
 
 @NgModule({
   exports: [
     LayoutsModule,
+    SharedConfigModule,
+    SharedMetaModule
   ],
   providers: []
 })

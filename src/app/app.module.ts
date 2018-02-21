@@ -15,25 +15,6 @@ import { SharedModule } from '@shared/shared.module';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 
-export function metaFactory(): MetaLoader {
-  const setting: MetaSettings = {
-    callback: (key: string) => key,
-    pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
-    pageTitleSeparator: ' | ',
-    applicationName: 'App Universal',
-    // applicationUrl: 'https://gorniv.com/',
-    defaults: {
-      title: 'default page title',
-      description: 'default description',
-      'og:site_name': 'App site Universal',
-      'og:type': 'website',
-      'og:locale': 'ru_RU',
-      'og:locale:alternate': 'en_GB'
-    }
-  };
-  return new MetaStaticLoader(setting);
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,11 +28,6 @@ export function metaFactory(): MetaLoader {
     TransferHttpModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    MetaModule.forRoot({
-      provide: MetaLoader,
-      useFactory: metaFactory,
-      deps: []
-    }),
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
