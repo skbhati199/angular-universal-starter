@@ -9,7 +9,7 @@ import 'rxjs/add/operator/first';
 // shared
 import { UniversalStorage } from '../forStorage/server.storage';
 import { AppStorage } from '../forStorage/universal.inject';
-import { TranslatesServerModule } from '@shared/translates/translates-server';
+import { SharedTranslateServerModule } from '@shared/shared-translate/shared-translate-server';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
@@ -21,7 +21,7 @@ import { AppModule } from './app.module';
     ServerTransferStateModule,
     ServerModule,
     ModuleMapLoaderModule,
-    TranslatesServerModule
+    SharedTranslateServerModule
   ],
   bootstrap: [AppComponent],
   providers: [

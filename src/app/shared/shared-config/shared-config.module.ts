@@ -1,45 +1,26 @@
-import { NgModule } from '@angular/core';
-import { ConfigLoader, ConfigModule, ConfigStaticLoader } from '@ngx-config/core';
+import { NgModule, PLATFORM_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-export function configFactory(): ConfigLoader {
-  return new ConfigStaticLoader({
-    'system': {
-      'appName': 'App Universal Starter',
-      'appUrl': 'http://ssr.angular.su'
-    },
-    'meta': {
-      'defaultPageTitle': 'Default title App Universal',
-      'defaultMetaDescription': 'Default description',
-      'pageTitleSeparator': ' | ',
-      'pageTitlePositioning': 10
-    },
-    'i18n': {
-      'defaultLanguage': {
-        'code': 'en',
-        'name': 'English',
-        'culture': 'en-US'
-      },
-      'availableLanguages': [
-        {
-          'code': 'en',
-          'name': 'English',
-          'culture': 'en-US'
-        },
-        {
-          'code': 'ru',
-          'name': 'русский',
-          'culture': 'ru-RU'
-        }
-      ]
-    }
-  });
+import { ConfigLoader, ConfigModule } from '@ngx-config/core';
+import { ConfigFsLoader } from '@ngx-config/fs-loader';
+import { ConfigHttpLoader } from '@ngx-config/http-loader';
+import { UniversalConfigLoader } from '@ngx-universal/config-loader';
+
+const PATH_CONFIG_SERVER: string = './dist/assets/config/config.json';
+const PATH_CONFIG_BROWSER: string = './assets/config/config.json';
+
+export function configFactory(platformId: any, http: HttpClient): ConfigLoader {
+  const serverLoader: ConfigLoader = new ConfigFsLoader(PATH_CONFIG_SERVER);
+  const browserLoader: ConfigLoader = new ConfigHttpLoader(http, PATH_CONFIG_BROWSER);
+  return new UniversalConfigLoader(platformId, serverLoader, browserLoader);
 }
 
 @NgModule({
   imports: [
     ConfigModule.forRoot({
       provide: ConfigLoader,
-      useFactory: (configFactory)
+      useFactory: configFactory,
+      deps: [PLATFORM_ID, HttpClient]
     }),
   ]
 })

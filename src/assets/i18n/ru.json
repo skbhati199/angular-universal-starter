@@ -1,4 +1,8 @@
 {
+  "APP_NAME": "Начальное приложение Universal",
+  "DEFAULT_TITLE": "Заголвок по умолчанию App Universal",
+  "DEFAULT_META_DESCRIPTION": "Описание по умолчанию",
+
   "loading": "Загрузка",
   "sidebar": {
     "home": "Главная",

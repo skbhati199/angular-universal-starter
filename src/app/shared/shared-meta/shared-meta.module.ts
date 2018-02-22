@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
+
 import { MetaLoader, MetaModule, MetaStaticLoader } from '@ngx-meta/core';
 import { ConfigService } from '@ngx-config/core';
+import { TranslateService } from '@ngx-translate/core';
 
-export function metaFactory(config: ConfigService): MetaLoader {
+export function metaFactory(config: ConfigService, translate: TranslateService): MetaLoader {
   return new MetaStaticLoader({
-    callback: (key: string) => key,
+    callback: (key: string) => translate.get(key),
     pageTitlePositioning: config.getSettings('meta.pageTitlePositioning'),
     pageTitleSeparator: config.getSettings('meta.pageTitleSeparator'),
     applicationName: config.getSettings('system.appName'),
@@ -25,7 +27,7 @@ export function metaFactory(config: ConfigService): MetaLoader {
     MetaModule.forRoot({
       provide: MetaLoader,
       useFactory: metaFactory,
-      deps: [ConfigService]
+      deps: [ConfigService, TranslateService]
     }),
   ]
 })

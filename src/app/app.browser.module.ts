@@ -10,7 +10,7 @@ import { AppStorage } from '../forStorage/universal.inject';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-import { TranslatesBrowserModule } from '@shared/translates/translates-browser';
+import { SharedTranslateBrowserModule } from '@shared/shared-translate/shared-translate-browser';
 
 // import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -27,7 +27,7 @@ export function getRequest(): any {
     BrowserTransferStateModule,
     // ServiceWorkerModule.register('/ngsw-worker.js'),
     AppModule,
-    TranslatesBrowserModule
+    SharedTranslateBrowserModule
   ],
   providers: [
     {

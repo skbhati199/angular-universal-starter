@@ -1,4 +1,8 @@
 {
+  "APP_NAME": "App Universal Starter",
+  "DEFAULT_TITLE": "Default title App Universal test",
+  "DEFAULT_META_DESCRIPTION": "Default description test",
+
   "loading": "Loading",
   "sidebar": {
     "home": "Home",
