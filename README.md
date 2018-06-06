@@ -5,9 +5,13 @@
 > Repository with Angular CLI and Angular Universal
 
 **Translations**:
-- [Русский](./README-RU.md)
 - [English](./README.md)
-- [Românesc](./README-RO.md)
+
+**LIVEDEMO**:
+- https://metroproject-10d52.firebaseapp.com
+
+**Local Demo**:
+- localhost:4000 
 
 **Resources**:
 - public chat https://t.me/angular_universal_ru
@@ -40,6 +44,10 @@
   - `npm run ssr:sw` - build server
   - `npm run ssr:webpack` -build `server.js`
   - `npm run ssr:server` - server with watch
+- deploy firebase wit firebase-cli:
+  - `firebase login` - Login Console Firebase 
+  - `firebase init ` - Initialization firebase project selected firebase --hosting wiht spacebar hit
+  - `npm run build:universal && firebase deploy` - Build and Deploy your project on Firebase Cloud
 
 ## How to use this repository in your project:
 To transfer ssr to your repository, you need the following files:
@@ -124,3 +132,14 @@ this allows you to remove some of the problems when working with `undefined`.
 - https://github.com/ReactiveX/rxjs-tslint
 - `ng update @angular/cli`
 - `preboot` is not working now
+
+
+## Needful code, Please donate me
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JB96ZRD33B5CS)
+
+**Hello Friend, I want to sharing my knowledge and git repository. Please donate me few money 10$-100$.**
+
+![Screenshot](https://raw.githubusercontent.com/skbhati199/angular4-Quick-Start/master/donateme.png)
+
+### Thank you so much....
